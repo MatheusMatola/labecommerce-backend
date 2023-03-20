@@ -1,0 +1,23 @@
+{
+  "name": "labecommerce-backend",
+  "version": "1.0.0",
+  "description": "Projeto backend que visa criar uma API do zero",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "jokenpo": "node ./jokenpo.js"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusMatola/labecommerce-backend.git"
+  },
+  "author": "Matheus Matola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatheusMatola/labecommerce-backend/issues"
+  },
+  "homepage": "https://github.com/MatheusMatola/labecommerce-backend#readme"
+}
