@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "Projeto backend que visa criar uma API do zero",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./index.js",
-    "jokenpo": "node ./jokenpo.js"
+    "start": "tsc && node ./build/index.js"
+    
     
   },
   "repository": {
@@ -19,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/MatheusMatola/labecommerce-backend/issues"
   },
-  "homepage": "https://github.com/MatheusMatola/labecommerce-backend#readme"
+  "homepage": "https://github.com/MatheusMatola/labecommerce-backend#readme",
+  "devDependencies": {
+    "@types/node": "^18.15.5",
+    "typescript": "^5.0.2"
+  }
 }
