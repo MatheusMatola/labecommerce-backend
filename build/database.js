@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.purchaseItem = exports.productList = exports.newUsers = void 0;
+exports.querryProductsByName = exports.procurarProtudoPeloId = exports.createProduct = exports.createUser = exports.purchaseItem = exports.productList = exports.newUsers = exports.CATEGORY = void 0;
+var CATEGORY;
+(function (CATEGORY) {
+    CATEGORY["ACAO"] = "Acao e Aventura";
+    CATEGORY["RPG"] = "RPG";
+    CATEGORY["MUNDO_ABERTO"] = "Mundo Aberto";
+})(CATEGORY = exports.CATEGORY || (exports.CATEGORY = {}));
 exports.newUsers = [
     {
         id: "Matheus",
@@ -18,13 +24,13 @@ exports.productList = [
         id: "jogo1",
         name: "The Last of US Part II",
         price: 250.00,
-        categoty: 'Dor&Sofrimento',
+        category: CATEGORY.ACAO
     },
     {
         id: "jogo2",
         name: "Red Dead Redemption 2",
         price: 350.00,
-        categoty: 'simulador de Goiás',
+        category: (CATEGORY.RPG, CATEGORY.MUNDO_ABERTO)
     }
 ];
 exports.purchaseItem = [
@@ -41,4 +47,29 @@ exports.purchaseItem = [
         totalPrice: 350.00,
     }
 ];
+const newUser = [];
+function createUser(id, email, password) {
+    const newUser = { id, email, password };
+    exports.newUsers.push(newUser);
+    return console.log("Cadastro realizado com sucesso!");
+}
+exports.createUser = createUser;
+function getAllUsers() {
+    return exports.newUsers;
+}
+const novoProduto = [];
+function createProduct(id, name, price, category) {
+    const novoProduto = { id, name, price, category };
+    exports.productList.push(novoProduto);
+    return console.log("Produto cadastrado com sucesso!");
+}
+exports.createProduct = createProduct;
+function procurarProtudoPeloId(id) {
+    return exports.productList.find((product) => product.id === id);
+}
+exports.procurarProtudoPeloId = procurarProtudoPeloId;
+function querryProductsByName(name) {
+    return exports.productList.find((product) => product.name.toLocaleLowerCase() === name.toLocaleLowerCase());
+}
+exports.querryProductsByName = querryProductsByName;
 //# sourceMappingURL=database.js.map

@@ -1,4 +1,4 @@
-import { newUsers,productList,purchaseItem } from "./database"
+import { newUsers,productList,purchaseItem, CATEGORY, createUser, createProduct, procurarProtudoPeloId, querryProductsByName} from "./database"
 
 
 
@@ -11,12 +11,13 @@ export type TUser = {
 }
 
 
+
 export type TProduct = {
 
     id: string,
     name: string,
     price: number,
-    categoty: string,
+    category: CATEGORY,
 
 }
 
@@ -30,8 +31,19 @@ export type TPurchase = {
 
 }
 
-console.log(newUsers)
 
-console.log(productList)
 
-console.log(purchaseItem)
+// createUser("Marcola", "marcola@email.com", "123")
+
+// createProduct("p004", "The Witcher 3", 200, CATEGORY.MUNDO_ABERTO)
+
+// console.log(newUsers)
+
+// console.log(productList)
+
+// console.log(purchaseItem)
+
+
+console.log(procurarProtudoPeloId("jogo1"))
+
+console.log(querryProductsByName("red  2"))
