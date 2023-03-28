@@ -1,15 +1,4 @@
-import { TUser, TProduct, TPurchase, } from ".";
-
-
-
-export enum CATEGORY {
-
-    ACAO= "Acao e Aventura",
-    RPG= "RPG",
-    MUNDO_ABERTO = "Mundo Aberto",
-    
-    
-    }
+import { TUser, TProduct, TPurchase, CATEGORY } from "./type";
 
 export const newUsers : TUser[] = [
 {
@@ -101,6 +90,8 @@ export function createProduct (id: string, name: string, price: number, category
     return console.log("Produto cadastrado com sucesso!")
 
 }
+
+
 
 
 // Função para procurar produto pelo ID

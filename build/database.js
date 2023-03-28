@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.querryProductsByName = exports.procurarProtudoPeloId = exports.createProduct = exports.createUser = exports.purchaseItem = exports.productList = exports.newUsers = exports.CATEGORY = void 0;
+exports.createPurchase = exports.querryProductsByName = exports.procurarProtudoPeloId = exports.createProduct = exports.createUser = exports.purchaseItem = exports.productList = exports.newUsers = exports.CATEGORY = void 0;
 var CATEGORY;
 (function (CATEGORY) {
     CATEGORY["ACAO"] = "Acao e Aventura";
@@ -72,4 +72,10 @@ function querryProductsByName(name) {
     return exports.productList.find((product) => product.name.toLocaleLowerCase() === name.toLocaleLowerCase());
 }
 exports.querryProductsByName = querryProductsByName;
+function createPurchase(userId, productId, quantity, totalPrice) {
+    const novaCompra = { userId, productId, quantity, totalPrice };
+    exports.purchaseItem.push(novaCompra);
+    return console.log("Compra realizada com sucesso");
+}
+exports.createPurchase = createPurchase;
 //# sourceMappingURL=database.js.map
