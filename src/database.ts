@@ -8,9 +8,9 @@ export const newUsers : TUser[] = [
 },
 
 {
-    id:"Chico",
-    email: "chico@gmail.com",
-    password: "sou1cachorro123"
+    id:"Neymar JR",
+    email: "ney@gmail.com",
+    password: "voltabruna123"
 }
 ]
 
@@ -47,7 +47,7 @@ export const purchaseItem: TPurchase[]=[
 
 },
 {
-    userId: "Chico",
+    userId: "Neymar",
     productId: "Jogo2",
     quantity: 1,
     totalPrice: 350.00,

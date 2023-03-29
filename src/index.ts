@@ -3,7 +3,7 @@ import { newUsers,productList,purchaseItem, createUser, createProduct, procurarP
 import express, {Request, Response} from 'express';
 
 import cors from 'cors';
-import { TProduct, TPurchase, TUser } from "./type";
+import { CATEGORY, TProduct, TPurchase, TUser } from "./type";
 
 const app = express();
 
@@ -25,7 +25,7 @@ app.get("/ping", (req: Request, res: Response) => {
 })
 
 
- // Get All User
+// GetAllUser
   app.get('/users', (req: Request, res: Response)=>{
 
     res.status(200).send(newUsers)
@@ -33,7 +33,7 @@ app.get("/ping", (req: Request, res: Response) => {
 })
 
 
-//Get All Products
+//GetAllProducts
 app.get('/products', (req: Request, res: Response)=>{
 
     res.status(200).send(productList)
@@ -41,7 +41,7 @@ app.get('/products', (req: Request, res: Response)=>{
 })
 
 
-//Search Product by name
+//SearchProductByName
 app.get('/products/search', (req: Request, res: Response)=>{
     
     const q= req.query.q as string
@@ -57,7 +57,7 @@ app.get('/products/search', (req: Request, res: Response)=>{
 })
 
 
-//Create User
+//CreateUser
 app.post ('/users', (req: Request, res: Response)=>{
 
     const id = req.body.id
@@ -79,7 +79,7 @@ app.post ('/users', (req: Request, res: Response)=>{
 })
 
 
-//Create Product
+//CreateProduct
 app.post ('/products', (req: Request, res: Response)=>{
 
     const id = req.body.id
@@ -103,7 +103,7 @@ app.post ('/products', (req: Request, res: Response)=>{
 })
 
 
-//Create Purchase
+//CreatePurchase
 app.post ('/purchases', (req: Request, res: Response)=>{
 
     const userId = req.body.userId
@@ -126,6 +126,159 @@ app.post ('/purchases', (req: Request, res: Response)=>{
     res.status(200).send("Compra realizada com sucesso")
 
 })
+
+
+//GetProductById
+app.get('/products/:id', (req: Request, res: Response)=>{
+    
+    const id= req.params.id as string
+
+    const result = productList.filter((products)=>{
+        
+        return products.id.includes(id)
+
+    })
+
+    res.status(200).send(result)
+
+})
+
+
+//GetUserPurchasesByUserid
+app.get('/users/:id/purchases', (req: Request, res: Response)=>{
+    
+    const id= req.params.id as string
+
+    const result = purchaseItem.filter((purchase)=>{
+        
+        return purchase.userId.includes(id)
+
+    })
+
+    res.status(200).send(result)
+
+})
+
+
+//DeleteUserById
+app.delete('/users/:id', (req: Request, res: Response) => {
+
+    const id = req.params.id
+
+    const usersIndex = newUsers.findIndex((users) => users.id === id)
+
+    if (usersIndex >= 0) {
+
+
+
+        newUsers.splice(usersIndex, 1)
+    }
+
+    res.status(200).send("Item deletado com sucesso")
+})
+
+
+//DeleteProductById
+app.delete('/products/:id', (req: Request, res: Response) => {
+
+    const id = req.params.id
+
+    const productsIndex = productList.findIndex((productList) => productList.id === id)
+
+    if (productsIndex >= 0) {
+
+
+
+        productList.splice(productsIndex, 1)
+    }
+
+    res.status(200).send("Produto apagado com sucesso")
+
+})
+
+
+//EditUserById
+app.put('/users/:id', (req: Request, res: Response) => {
+
+    const id = req.params.id
+
+		const newId = req.body.id as string | undefined         
+		const newEmail = req.body.email as string | undefined    
+		const newPassword = req.body.password as string | undefined       
+
+
+    const user = newUsers.find((user) => user.id === id)
+
+	
+    if (user) {
+        
+        user.id = newId || user.id
+        user.email = newEmail || user.email
+        user.password = newPassword || user.password
+
+
+				
+    }
+
+    res.status(200).send("Atualização realizada com sucesso")
+})
+
+
+//EditProductById
+app.put('/products/:id', (req: Request, res: Response) => {
+
+    const id = req.params.id
+
+		const newId = req.body.id as string | undefined         
+		const newName = req.body.name as string | undefined    
+		const newPrice = req.body.price as number | undefined       
+        const newCategory = req.body.category as CATEGORY | undefined
+
+    const product = productList.find((product) => product.id === id)
+
+	
+    if (product) {
+        
+        product.id = newId || product.id
+        product.name = newName || product.name
+        product.price= newPrice || product.price
+        product.category= newCategory || product.category
+
+
+				
+    }
+
+    res.status(200).send("Atualização realizada com sucesso")
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
