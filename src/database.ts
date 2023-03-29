@@ -1,15 +1,4 @@
-import { TUser, TProduct, TPurchase, } from ".";
-
-
-
-export enum CATEGORY {
-
-    ACAO= "Acao e Aventura",
-    RPG= "RPG",
-    MUNDO_ABERTO = "Mundo Aberto",
-    
-    
-    }
+import { TUser, TProduct, TPurchase, CATEGORY } from "./type";
 
 export const newUsers : TUser[] = [
 {
@@ -19,9 +8,9 @@ export const newUsers : TUser[] = [
 },
 
 {
-    id:"Chico",
-    email: "chico@gmail.com",
-    password: "sou1cachorro123"
+    id:"Neymar JR",
+    email: "ney@gmail.com",
+    password: "voltabruna123"
 }
 ]
 
@@ -58,7 +47,7 @@ export const purchaseItem: TPurchase[]=[
 
 },
 {
-    userId: "Chico",
+    userId: "Neymar",
     productId: "Jogo2",
     quantity: 1,
     totalPrice: 350.00,
@@ -101,6 +90,8 @@ export function createProduct (id: string, name: string, price: number, category
     return console.log("Produto cadastrado com sucesso!")
 
 }
+
+
 
 
 // Função para procurar produto pelo ID
